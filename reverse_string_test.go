@@ -2,8 +2,6 @@ package reverse_string
 
 import (
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
 type test struct {
@@ -33,7 +31,9 @@ enil tsrif eht si sihT`,
 	for name, tt := range tests {
 		t.Run(name, func(t *testing.T) {
 			res := ReverseString(tt.testString)
-			assert.Equal(t, tt.expString, res)
+			if tt.expString != res {
+				t.Errorf("error: got %s, want %s", res, tt.expString)
+			}
 		})
 	}
 }
